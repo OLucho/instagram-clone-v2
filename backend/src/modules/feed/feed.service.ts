@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Like } from 'src/like/like.entity';
-import { Photo } from 'src/photo/photo.entity';
-import { User } from 'src/user/user.entity';
+import { Like } from 'src/modules/like/like.entity';
+import { Photo } from 'src/modules/photo/photo.entity';
+import { User } from 'src/modules/user/user.entity';
 
 @Injectable()
 export class FeedService {

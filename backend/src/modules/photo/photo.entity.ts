@@ -9,9 +9,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Like } from 'src/like/like.entity';
-import { User } from 'src/user/user.entity';
-import { Comment } from 'src/comment/comment.entity';
+import { Like } from 'src/modules/like/like.entity';
+import { User } from 'src/modules/user/user.entity';
+import { Comment } from 'src/modules/comment/comment.entity';
 
 @Entity()
 export class Photo extends BaseEntity {

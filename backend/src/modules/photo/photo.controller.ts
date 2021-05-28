@@ -13,9 +13,9 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { LikeService } from 'src/like/like.service';
-import { GetUser } from 'src/user/decorator/get.user';
-import { User } from 'src/user/user.entity';
+import { LikeService } from 'src/modules/like/like.service';
+import { GetUser } from 'src/modules/user/decorator/get.user';
+import { User } from 'src/modules/user/user.entity';
 import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 

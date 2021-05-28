@@ -6,11 +6,11 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Photo } from 'src/photo/photo.entity';
-import { PhotoService } from 'src/photo/photo.service';
-import { GetUser } from 'src/user/decorator/get.user';
-import { User } from 'src/user/user.entity';
-import { UserService } from 'src/user/user.service';
+import { Photo } from 'src/modules/photo/photo.entity';
+import { PhotoService } from 'src/modules/photo/photo.service';
+import { GetUser } from 'src/modules/user/decorator/get.user';
+import { User } from 'src/modules/user/user.entity';
+import { UserService } from 'src/modules/user/user.service';
 import { FeedService } from './feed.service';
 
 @Controller('feed')

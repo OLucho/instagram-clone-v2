@@ -12,8 +12,8 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { FollowService } from 'src/follow/follow.service';
-import { PhotoService } from 'src/photo/photo.service';
+import { FollowService } from 'src/modules/follow/follow.service';
+import { PhotoService } from 'src/modules/photo/photo.service';
 import { GetUser } from './decorator/get.user';
 import { ValidationUserDto } from './dto/create.user.dto';
 import { SignInDto } from './dto/signIn.dto';

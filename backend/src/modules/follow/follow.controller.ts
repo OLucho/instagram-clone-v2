@@ -6,9 +6,9 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/user/decorator/get.user';
-import { User } from 'src/user/user.entity';
-import { UserService } from 'src/user/user.service';
+import { GetUser } from 'src/modules/user/decorator/get.user';
+import { User } from 'src/modules/user/user.entity';
+import { UserService } from 'src/modules/user/user.service';
 import { FollowService } from './follow.service';
 
 @Controller('follow')

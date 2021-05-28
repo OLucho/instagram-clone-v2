@@ -9,9 +9,9 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { PhotoService } from 'src/photo/photo.service';
-import { GetUser } from 'src/user/decorator/get.user';
-import { User } from 'src/user/user.entity';
+import { PhotoService } from 'src/modules/photo/photo.service';
+import { GetUser } from 'src/modules/user/decorator/get.user';
+import { User } from 'src/modules/user/user.entity';
 import { Comment } from './comment.entity';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/comment.dto';

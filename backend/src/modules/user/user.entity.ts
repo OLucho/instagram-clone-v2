@@ -1,4 +1,4 @@
-import { Photo } from 'src/photo/photo.entity';
+import { Photo } from 'src/modules/photo/photo.entity';
 import {
   BaseEntity,
   Column,
@@ -9,9 +9,9 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { Like } from 'src/like/like.entity';
-import { Comment } from 'src/comment/comment.entity';
-import { Follow } from 'src/follow/follow.entity';
+import { Like } from 'src/modules/like/like.entity';
+import { Comment } from 'src/modules/comment/comment.entity';
+import { Follow } from 'src/modules/follow/follow.entity';
 
 @Unique(['username'])
 @Unique(['email'])

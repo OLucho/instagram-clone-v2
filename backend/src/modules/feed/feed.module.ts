@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PhotoModule } from 'src/photo/photo.module';
-import { UserModule } from 'src/user/user.module';
+import { PhotoModule } from 'src/modules/photo/photo.module';
+import { UserModule } from 'src/modules/user/user.module';
 import { FeedController } from './feed.controller';
 import { FeedService } from './feed.service';
 

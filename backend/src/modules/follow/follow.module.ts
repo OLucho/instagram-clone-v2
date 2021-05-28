@@ -1,6 +1,6 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from 'src/modules/user/user.module';
 import { FollowController } from './follow.controller';
 import { FollowRepository } from './follow.repository';
 import { FollowService } from './follow.service';

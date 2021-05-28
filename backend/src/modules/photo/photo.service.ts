@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/user/user.entity';
+import { User } from 'src/modules/user/user.entity';
 import { Photo } from './photo.entity';
 import { fromDtoToEntity } from './photo.mapper';
 import { PhotoRepository } from './photo.repository';

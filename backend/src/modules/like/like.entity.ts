@@ -1,5 +1,5 @@
-import { Photo } from 'src/photo/photo.entity';
-import { User } from 'src/user/user.entity';
+import { Photo } from 'src/modules/photo/photo.entity';
+import { User } from 'src/modules/user/user.entity';
 import {
   BaseEntity,
   Column,
