@@ -6,17 +6,21 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { BaseController } from 'src/common/base.controller';
 import { GetUser } from 'src/modules/user/decorator/get.user';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { User } from 'src/modules/user/user.entity';
 import { UserService } from 'src/modules/user/user.service';
 import { FollowService } from './follow.service';
 
 @Controller('follow')
-export class FollowController {
+export class FollowController extends BaseController {
   constructor(
     private followService: FollowService,
     private userService: UserService,
-  ) {}
+  ) {
+    super();
+  }
 
   @Post('/:userId')
   @UseGuards(AuthGuard())

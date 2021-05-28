@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { BaseController } from 'src/common/base.controller';
 import { FollowService } from 'src/modules/follow/follow.service';
 import { PhotoService } from 'src/modules/photo/photo.service';
 import { GetUser } from './decorator/get.user';
@@ -22,12 +23,14 @@ import { User } from './user.entity';
 import { UserService } from './user.service';
 
 @Controller('user')
-export class UserController {
+export class UserController extends BaseController {
   constructor(
     private userService: UserService,
     private photoService: PhotoService,
     private followService: FollowService,
-  ) {}
+  ) {
+    super();
+  }
 
   @UsePipes(ValidationPipe)
   @Post()

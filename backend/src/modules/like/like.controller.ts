@@ -7,17 +7,20 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { BaseController } from 'src/common/base.controller';
 import { PhotoService } from 'src/modules/photo/photo.service';
 import { GetUser } from 'src/modules/user/decorator/get.user';
 import { User } from 'src/modules/user/user.entity';
 import { LikeService } from './like.service';
 
 @Controller('like')
-export class LikeController {
+export class LikeController extends BaseController {
   constructor(
     private likeService: LikeService,
     private photoService: PhotoService,
-  ) {}
+  ) {
+    super();
+  }
 
   @Post('/:id')
   @UseGuards(AuthGuard())

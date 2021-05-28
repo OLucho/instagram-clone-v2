@@ -6,6 +6,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { BaseController } from 'src/common/base.controller';
 import { Photo } from 'src/modules/photo/photo.entity';
 import { PhotoService } from 'src/modules/photo/photo.service';
 import { GetUser } from 'src/modules/user/decorator/get.user';
@@ -14,12 +15,14 @@ import { UserService } from 'src/modules/user/user.service';
 import { FeedService } from './feed.service';
 
 @Controller('feed')
-export class FeedController {
+export class FeedController extends BaseController {
   constructor(
     private feedService: FeedService,
     private userService: UserService,
     private photoService: PhotoService,
-  ) {}
+  ) {
+    super();
+  }
 
   @Get()
   @UseGuards(AuthGuard())

@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { BaseController } from 'src/common/base.controller';
 import { LikeService } from 'src/modules/like/like.service';
 import { GetUser } from 'src/modules/user/decorator/get.user';
 import { User } from 'src/modules/user/user.entity';
@@ -20,11 +21,13 @@ import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 
 @Controller('photo')
-export class PhotoController {
+export class PhotoController extends BaseController {
   constructor(
     private photoService: PhotoService,
     private likeService: LikeService,
-  ) {}
+  ) {
+    super();
+  }
 
   @Post('/upload')
   @UseInterceptors(FileInterceptor('file'))

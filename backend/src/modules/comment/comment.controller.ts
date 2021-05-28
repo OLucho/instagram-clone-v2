@@ -9,6 +9,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { BaseController } from 'src/common/base.controller';
 import { PhotoService } from 'src/modules/photo/photo.service';
 import { GetUser } from 'src/modules/user/decorator/get.user';
 import { User } from 'src/modules/user/user.entity';
@@ -17,11 +18,13 @@ import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/comment.dto';
 
 @Controller('comment')
-export class CommentController {
+export class CommentController extends BaseController {
   constructor(
     private commentService: CommentService,
     private photoService: PhotoService,
-  ) {}
+  ) {
+    super();
+  }
 
   @Post('/:photoId')
   @UsePipes(ValidationPipe)
