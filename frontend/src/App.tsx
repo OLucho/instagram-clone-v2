@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App: React.FC = ({}) => {
-  return <h1>Begin</h1>;
+  return <h1>Hola</h1>;
 };
 
 export default App;
