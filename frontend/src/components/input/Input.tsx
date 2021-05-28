@@ -2,22 +2,31 @@ import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 import styled from 'styled-components/macro';
 
-interface InputProps {
+interface Props {
   name: string;
   type?: string;
   placeholder?: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
+type InputProps = JSX.IntrinsicElements['input'] & Props;
 
-  const { fieldName, error, defaultValue, registerField } = useField(name);
+const Input: React.FC<InputProps> = ({ name, ...rest }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { fieldName, defaultValue, registerField, error } = useField(name);
 
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
+      ref: inputRef,
+      getValue: (ref) => {
+        return ref.current.value;
+      },
+      setValue: (ref, value) => {
+        ref.current.value = value;
+      },
+      clearValue: (ref) => {
+        ref.current.value = '';
+      },
     });
   }, [fieldName, registerField]);
 
