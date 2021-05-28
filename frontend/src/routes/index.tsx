@@ -8,10 +8,10 @@ export const Routes: React.FC = () => {
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Main} />
-          <Route exact path="/photo/:photoId" component={Post} />
-          <Route exact path="/profile/:username" component={Profile} />
-          <Route exact path="/edit/:username" component={Edit} />
+          <Route exact path="/" component={Main} isPrivate />
+          <Route exact path="/photo/:photoId" component={Post} isPrivate />
+          <Route exact path="/profile/:username" component={Profile} isPrivate />
+          <Route exact path="/edit/:username" component={Edit} isPrivate />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
         </Switch>

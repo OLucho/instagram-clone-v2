@@ -1,6 +1,13 @@
 import { Redirect, Route } from 'react-router';
 
-export default function HandleRoutes({ isPrivate = false, component: Component, ...rest }) {
+interface HandleRoutesProps {
+  isPrivate?: boolean;
+  component: React.FC;
+  exact: any;
+  path: any;
+}
+
+const HandleRoutes: React.FC<HandleRoutesProps> = ({ isPrivate = false, component: Component, ...rest }) => {
   const user = false;
   return (
     <Route
@@ -21,4 +28,8 @@ export default function HandleRoutes({ isPrivate = false, component: Component, 
       }
     />
   );
-}
+};
+
+export default HandleRoutes;
+
+import React from 'react';
