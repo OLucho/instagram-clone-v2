@@ -36,9 +36,7 @@ export const Form = styled(Unform)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  > img {
-    width: 230px;
-  }
+
   @media (max-width: 450px) {
     background: transparent;
     border: 0;

@@ -8,6 +8,7 @@ import gif from '../../assets/gif.gif';
 import logo from '../../assets/logo.png';
 import { getValidationErrors } from '../../utils/validation';
 import { SubmitHandler } from '@unform/core';
+import Logo from '../../components/logo';
 
 const SignUp: React.FC = () => {
   const formRef = useRef(null);
@@ -50,7 +51,7 @@ const SignUp: React.FC = () => {
 
       <FormContainer>
         <Form onSubmit={handleSubmit} ref={formRef}>
-          <img src={logo} alt="logo" />
+          <Logo src={logo} width="290px" />
           <span>Register to upload images </span>
           <hr />
           {serverError && (

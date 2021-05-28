@@ -47,7 +47,7 @@ const SignIn: React.FC = () => {
     <Container>
       <FormContainer>
         <Form onSubmit={handleSubmit} ref={formRef}>
-          <Logo src={logo} alt="logo" />
+          <Logo src={logo} width="230px" />
           <Description>Log in to watch photos and videos </Description>
           {serverError && (
             <ErrorMessage>
