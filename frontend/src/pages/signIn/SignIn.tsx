@@ -10,11 +10,14 @@ import { Container, Footer, Form, FormContainer, ErrorMessage, Logo, Description
 import Input from '../../components/input/Input';
 import logo from '../../assets/logo.png';
 import { getValidationErrors } from '../../utils/validation';
+import { signIn } from '../../redux/user/userAction';
+import { useDispatch } from 'react-redux';
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
   const [serverError, setServerError] = useState('');
+  const dispatch = useDispatch();
 
   interface FormData {
     name: string;
@@ -30,8 +33,8 @@ const SignIn: React.FC = () => {
       });
       await schema.validate(data, { abortEarly: false });
 
-      //   await signIn({ username: data.username, password: data.password });
-      //  history.push('/');
+      await dispatch(signIn({ username: data.username, password: data.password }));
+      history.push('/');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errors = getValidationErrors(error);
