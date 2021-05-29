@@ -23,8 +23,7 @@ export default createGlobalStyle`
     }
     input{
         &::placeholder {
-            color: rgba(0,0,0,0.3);
-            font:400 13px Arial;
+            color: rgba(0,0,0,0.4);
         }
     }
 `;

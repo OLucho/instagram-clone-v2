@@ -3,8 +3,8 @@ import { Redirect, Route } from 'react-router';
 interface HandleRoutesProps {
   isPrivate?: boolean;
   component: React.FC;
-  exact: any;
-  path: any;
+  exact: boolean;
+  path: string;
 }
 
 const HandleRoutes: React.FC<HandleRoutesProps> = ({ isPrivate = false, component: Component, ...rest }) => {
