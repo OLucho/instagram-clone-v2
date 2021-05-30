@@ -3,22 +3,25 @@
 // @ts-nocheck
 
 import { Link, useHistory } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import * as Yup from 'yup';
 import { SubmitHandler, FormHandles } from '@unform/core';
-import { Container, Footer, Form, FormContainer, ErrorMessage, Logo, Description, Button } from './styles';
-import Input from '../../components/input/Input';
-import logo from '../../assets/logo.png';
+import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as userActions from '../../redux/user/userAction';
 import { getValidationErrors } from '../../utils/validation';
-import { signIn } from '../../redux/user/userAction';
-import { useDispatch } from 'react-redux';
+import Input from '../../components/input/Input';
+import { Container, Footer, Form, FormContainer, ErrorMessage, Logo, Description, Button } from './styles';
+import logo from '../../assets/logo.png';
+import { State } from '../../redux/reducers';
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
-  const [serverError, setServerError] = useState('');
   const dispatch = useDispatch();
 
+  const { signIn } = bindActionCreators(userActions, dispatch);
+  const { error: serverError } = useSelector((state: State) => state.user);
   interface FormData {
     name: string;
     password: string;
@@ -33,15 +36,12 @@ const SignIn: React.FC = () => {
       });
       await schema.validate(data, { abortEarly: false });
 
-      await dispatch(signIn({ username: data.username, password: data.password }));
+      await signIn({ username: data.username, password: data.password });
       history.push('/');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errors = getValidationErrors(error);
         formRef.current.setErrors(errors);
-      }
-      if (error.response) {
-        setServerError(error.response.data.message);
       }
     }
   };

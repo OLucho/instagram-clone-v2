@@ -1,4 +1,7 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router';
+import { State } from '../redux/reducers';
 
 interface HandleRoutesProps {
   isPrivate?: boolean;
@@ -8,7 +11,7 @@ interface HandleRoutesProps {
 }
 
 const HandleRoutes: React.FC<HandleRoutesProps> = ({ isPrivate = false, component: Component, ...rest }) => {
-  const user = false;
+  const user = useSelector<State>((state) => state.user.user);
   return (
     <Route
       {...rest}
@@ -31,5 +34,3 @@ const HandleRoutes: React.FC<HandleRoutesProps> = ({ isPrivate = false, componen
 };
 
 export default HandleRoutes;
-
-import React from 'react';
