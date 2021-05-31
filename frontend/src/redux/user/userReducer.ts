@@ -1,7 +1,7 @@
 import { ActionTypes, Action } from './userTypes';
 
 const initialState = {
-  user: localStorage.getItem('userData') || '',
+  user: localStorage.getItem('userData') || null,
   token: localStorage.getItem('userToken') || null,
   error: false,
   loading: false,

@@ -11,7 +11,8 @@ interface HandleRoutesProps {
 }
 
 const HandleRoutes: React.FC<HandleRoutesProps> = ({ isPrivate = false, component: Component, ...rest }) => {
-  const user = useSelector<State>((state) => state.user.user);
+  const { user } = useSelector((state: State) => state.user);
+
   return (
     <Route
       {...rest}

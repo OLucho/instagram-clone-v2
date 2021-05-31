@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
       });
       await schema.validate(data, { abortEarly: false });
 
-      await signIn({ username: data.username, password: data.password });
+      signIn({ username: data.username, password: data.password });
       history.push('/');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {

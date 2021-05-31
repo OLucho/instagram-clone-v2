@@ -21,3 +21,22 @@ export const signIn =
       dispatch({ type: ActionTypes.LOGIN_USER_FAILURE, payload: err.response.data.message });
     }
   };
+
+export const signUp =
+  ({ password, username }: ISignIn) =>
+  async (dispatch: Dispatch<Action>): Promise<void> => {
+    dispatch({ type: ActionTypes.LOGIN_USER_LOADING });
+    try {
+      const res = await api.post('/user/signin', { username, password });
+      if (res.status === 201) {
+        const { accessToken } = res.data;
+        api.defaults.headers.authorization = `Bearer ${accessToken}`;
+        const user = await api.get('/user/auth/me');
+        localStorage.setItem('userToken', accessToken);
+        localStorage.setItem('userData', JSON.stringify(user.data));
+        dispatch({ type: ActionTypes.LOGIN_USER_SUCCESS, payload: user.data });
+      }
+    } catch (err) {
+      dispatch({ type: ActionTypes.LOGIN_USER_FAILURE, payload: err.response.data.message });
+    }
+  };

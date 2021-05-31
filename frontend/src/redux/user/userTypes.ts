@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // prettier-ignore
 export enum ActionTypes  {
-  LOGIN_USER_LOADING, 'loading',
-  LOGIN_USER_SUCCESS, 'success',
-  LOGIN_USER_FAILURE, 'failure',
+  LOGIN_USER_LOADING, 'loginLoading',
+  LOGIN_USER_SUCCESS, 'loginSuccess',
+  LOGIN_USER_FAILURE, 'loginFailure',
+
+  SIGNUP_SUCCESS, "signUpSuccess"
 }
 
 export interface ISignIn {
@@ -25,4 +27,9 @@ interface LOGIN_FAILURE {
   payload: string;
 }
 
-export type Action = LOGIN_SUCCESS | LOGIN_FAILURE | LOGIN_LOADING;
+interface SIGNUP_SUCCESS {
+  type: ActionTypes.SIGNUP_SUCCESS;
+  payload: string;
+}
+
+export type Action = LOGIN_SUCCESS | LOGIN_FAILURE | LOGIN_LOADING | SIGNUP_SUCCESS;

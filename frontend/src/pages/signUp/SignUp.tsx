@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link, useHistory } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import { SubmitHandler } from '@unform/core';
 import * as Yup from 'yup';
 import { Container, Footer, Form, FormContainer, Gif, ErrorMessage } from './styles';
 import Input from '../../components/input/Input';
 import gif from '../../assets/gif.gif';
 import logo from '../../assets/logo.png';
 import { getValidationErrors } from '../../utils/validation';
-import { SubmitHandler } from '@unform/core';
 import Logo from '../../components/logo';
 
 const SignUp: React.FC = () => {

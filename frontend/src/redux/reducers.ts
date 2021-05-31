@@ -5,5 +5,5 @@ const reducers = combineReducers({
   user: usersReducer,
 });
 
-export default reducers;
 export type State = ReturnType<typeof reducers>;
+export default reducers;
