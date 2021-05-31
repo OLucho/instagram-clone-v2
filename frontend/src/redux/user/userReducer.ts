@@ -28,6 +28,13 @@ export default function usersReducer(state = initialState, action: Action) {
         loading: false,
         error: action.payload,
       };
+    case ActionTypes.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        user: action.payload,
+      };
     default:
       return state;
   }

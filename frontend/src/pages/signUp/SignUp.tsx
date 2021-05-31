@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link, useHistory } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { SubmitHandler } from '@unform/core';
+import { bindActionCreators } from 'redux';
 import * as Yup from 'yup';
 import { Container, Footer, Form, FormContainer, Gif, ErrorMessage } from './styles';
 import Input from '../../components/input/Input';
@@ -9,15 +11,20 @@ import gif from '../../assets/gif.gif';
 import logo from '../../assets/logo.png';
 import { getValidationErrors } from '../../utils/validation';
 import Logo from '../../components/logo';
+import * as userActions from '../../redux/user/userAction';
 
 const SignUp: React.FC = () => {
   const formRef = useRef(null);
   const history = useHistory();
   const [serverError, setServerError] = useState('');
+  const dispatch = useDispatch();
+  const { signUp } = bindActionCreators(userActions, dispatch);
 
   interface FormData {
     name: string;
     password: string;
+    email: string;
+    username: string;
   }
 
   const handleSubmit: SubmitHandler<FormData> = async (data) => {
@@ -31,8 +38,8 @@ const SignUp: React.FC = () => {
         password: Yup.string().required(),
       });
       await schema.validate(data, { abortEarly: false });
-      //  await api.post('/user', data);
-      history.push('/signin');
+      await signUp(data);
+      history.push('/');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errors = getValidationErrors(error);

@@ -13,6 +13,13 @@ export interface ISignIn {
   password: string;
 }
 
+export interface ISignUp {
+  name: string;
+  username: string;
+  password: string;
+  email: string;
+}
+
 interface LOGIN_SUCCESS {
   type: ActionTypes.LOGIN_USER_SUCCESS;
   payload: any;
