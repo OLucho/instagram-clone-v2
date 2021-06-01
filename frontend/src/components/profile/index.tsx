@@ -6,10 +6,10 @@ import avatar from '../../assets/defaultAvatar.png';
 interface ProfileProps {
   direction?: 'row' | 'column';
   usidebar?: boolean;
-  img: string;
+  img: string | null;
   isOwner?: boolean;
   username: string;
-  name: string;
+  name?: string;
 }
 
 export const Profile: React.FC<ProfileProps> = ({

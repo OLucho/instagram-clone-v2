@@ -25,6 +25,7 @@ export interface IPhoto {
     createdAt: string;
     updatedAt: string;
   };
+  comment: [];
 }
 
 interface UPLOAD_SUCCESS {

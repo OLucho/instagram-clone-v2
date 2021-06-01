@@ -15,7 +15,8 @@ const Main: React.FC = () => {
 
   const follows: IFollow[] = [];
   const loading = false;
-  const user = useSelector((state: State) => state.user.user);
+  const { user } = useSelector((state: State) => state.user);
+  console.log(user);
 
   return (
     <Layout>
@@ -40,6 +41,10 @@ const Main: React.FC = () => {
             {loading && <p>loading</p>}
           </ContainerFollows>
         </Aside>
+
+        <ContainerFeeds>
+          {feeds.length > 0 && feeds.map((feed) => <CardFeed key={feed.photo.id} feed={feed} />)}
+        </ContainerFeeds>
       </Container>
     </Layout>
   );
