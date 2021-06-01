@@ -4,6 +4,7 @@ export enum ActionTypes  {
     UPLOAD_LOADING, 'uploadLoading',
     UPLOAD_SUCCESS, 'uploadSuccess',
     UPLOAD_FAILURE, 'uploadFailure',
+    RESET_VALUES, "resetValues"
   }
 
 export interface IPhoto {
@@ -26,18 +27,23 @@ export interface IPhoto {
   };
 }
 
-interface LOGIN_SUCCESS {
+interface UPLOAD_SUCCESS {
   type: ActionTypes.UPLOAD_SUCCESS;
   payload: any;
 }
 
-interface LOGIN_LOADING {
+interface UPLOAD_LOADING {
   type: ActionTypes.UPLOAD_LOADING;
   payload: any;
 }
-interface LOGIN_FAILURE {
+interface UPLOAD_FAILURE {
   type: ActionTypes.UPLOAD_FAILURE;
   payload: string;
 }
 
-export type Action = LOGIN_SUCCESS | LOGIN_FAILURE | LOGIN_LOADING;
+interface RESET_VALUES {
+  type: ActionTypes.UPLOAD_FAILURE;
+  payload: any;
+}
+
+export type Action = UPLOAD_SUCCESS | UPLOAD_FAILURE | UPLOAD_LOADING | RESET_VALUES;

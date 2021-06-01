@@ -1,11 +1,18 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState, useRef, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, ImagePreview, MessagePreview, Body, Button } from './styles';
+import * as uploadActions from '../../redux/upload/uploadActions';
+import { bindActionCreators } from 'redux';
+import { State } from '../../redux/reducers';
 
 export const Upload: React.FC = () => {
-  const inputFile = useRef(null);
-  const inputBody = useRef(null);
+  const inputFile = useRef<HTMLInputElement>(null);
+  const inputBody = useRef<HTMLInputElement>(null);
 
-  const { error, loading, resetValues, uploadPhotoAction } = useUpload();
+  const dispatch = useDispatch();
+  const { uploadPhoto, resetValues } = bindActionCreators(uploadActions, dispatch);
+  const { data, error, loading } = useSelector((state: State) => state.upload);
 
   const [image, setImage] = useState('');
   const [body, setBody] = useState('');
@@ -15,10 +22,11 @@ export const Upload: React.FC = () => {
     (e) => {
       e.preventDefault();
       const dataImage = {
+        // @ts-ignore: Object is possibly 'null'.
         file: inputFile.current.files[0],
         body,
       };
-      uploadPhotoAction(dataImage);
+      uploadPhoto(dataImage);
 
       setDisabled(true);
     },
@@ -34,6 +42,7 @@ export const Upload: React.FC = () => {
       } else {
         setImage('');
       }
+      // @ts-ignore: Object is possibly 'null'.
       inputBody.current.focus();
     },
     [resetValues],
@@ -54,8 +63,10 @@ export const Upload: React.FC = () => {
   return (
     <Container onSubmit={handleUpload} enctype="multipart/form-data">
       {image ? (
+        // @ts-ignore: Object is possibly 'null'.
         <ImagePreview src={image} title="image preview" onClick={() => inputFile.current.click()} />
       ) : (
+        // @ts-ignore: Object is possibly 'null'.
         <MessagePreview onClick={() => inputFile.current.click()}>Select your photo</MessagePreview>
       )}
 

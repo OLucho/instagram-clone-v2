@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ActionTypes, Action, IPhoto } from './uploadTypes';
 
 interface IInitialState {
@@ -32,6 +33,14 @@ export default function uploadReducer(state = initialState, action: Action) {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    //@ts-ignore
+    case ActionTypes.RESET_VALUES:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: null,
       };
 
     default:

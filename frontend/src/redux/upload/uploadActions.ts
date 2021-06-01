@@ -5,7 +5,7 @@ import api from '../../services/api';
 import { ActionTypes } from './uploadTypes';
 
 interface IImage {
-  file: string;
+  file: File;
   body: string;
 }
 
@@ -26,4 +26,10 @@ export const uploadPhoto =
     } catch (err) {
       dispatch({ type: ActionTypes.UPLOAD_FAILURE, payload: err.response.data.message });
     }
+  };
+
+export const resetValues =
+  () =>
+  (dispatch: Dispatch<Action>): void => {
+    dispatch({ type: ActionTypes.RESET_VALUES });
   };

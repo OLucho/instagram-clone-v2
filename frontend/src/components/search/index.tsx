@@ -3,7 +3,7 @@ import { Container, ContainerResult, ContainerProfile, ContainerEmpty } from './
 import { Profile } from '../profile';
 
 interface SearchProps {
-  toggleClose: React.Dispatch<React.SetStateAction<string>>;
+  toggleClose: () => void;
 }
 
 const Search: React.FC<SearchProps> = ({ toggleClose }) => {

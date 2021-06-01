@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Container = styled.form`
+export const Container = styled.form<{ enctype: any }>`
   width: 100%;
   padding: 16px 14px;
   display: flex;
@@ -32,7 +32,7 @@ export const MessagePreview = styled.div`
   cursor: pointer;
 `;
 
-export const Body = styled.textarea`
+export const Body = styled.textarea<{ ref: any }>`
   width: 100%;
   padding: 16px 16px;
   height: 100px;
