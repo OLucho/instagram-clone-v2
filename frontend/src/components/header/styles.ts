@@ -16,7 +16,7 @@ export const Nav = styled.header`
 `;
 
 export const Container = styled.div`
-  max-width: 975px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -24,6 +24,10 @@ export const Container = styled.div`
   justify-content: space-between;
   @media (max-width: 1000px) {
     max-width: 975px;
+  }
+
+  img {
+    padding-top: 4px;
   }
 `;
 
