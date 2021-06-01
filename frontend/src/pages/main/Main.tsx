@@ -4,6 +4,7 @@ import { Aside, ContainerOwner, ContainerFollows, ContainerFeeds, Container } fr
 import { Profile } from '../../components/profile';
 import { State } from '../../redux/reducers';
 import { useSelector } from 'react-redux';
+import FeedCard from '../../components/FeedCard';
 
 const Main: React.FC = () => {
   interface IFollow {
@@ -14,6 +15,7 @@ const Main: React.FC = () => {
   }
 
   const follows: IFollow[] = [];
+
   const loading = false;
   const { user } = useSelector((state: State) => state.user);
   console.log(user);
@@ -43,7 +45,7 @@ const Main: React.FC = () => {
         </Aside>
 
         <ContainerFeeds>
-          {feeds.length > 0 && feeds.map((feed) => <CardFeed key={feed.photo.id} feed={feed} />)}
+          {feeds.length > 0 && feeds.map((feed) => <FeedCard key={feed.photo.id} feed={feed} />)}
         </ContainerFeeds>
       </Container>
     </Layout>

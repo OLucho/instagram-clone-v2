@@ -13,7 +13,7 @@ import ModalMoreOptions from '../modal/modalMoreOptions';
 import { Profile } from '../profile';
 import { Card, CardHeader, PhotoCard, CardControls, CardDetails, TimeAgo as StylesTimeAgo, CardFooter } from './styles';
 import api from '../../services/api';
-import CommentList from '../commentsList';
+import { CommentList } from '../listComments';
 import { IPhoto } from '../../redux/upload/uploadTypes';
 
 const formatter = buildFormatter(spanishString);
