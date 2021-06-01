@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ActionTypes, Action } from './userTypes';
 
-const initialState = {
-  user: localStorage.getItem('userData') || null,
+interface IInitialState {
+  user: any;
+  token: string | null;
+  error: string | boolean;
+  loading: boolean;
+}
+
+const initialState: IInitialState = {
+  //@ts-ignore
+  user: JSON.parse(localStorage.getItem('userData')) || '',
   token: localStorage.getItem('userToken') || null,
   error: false,
   loading: false,

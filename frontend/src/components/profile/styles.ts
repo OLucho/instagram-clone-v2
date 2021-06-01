@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ direction: 'column' | 'row'; usidebar: boolean }>`
+export const Container = styled.div<{ direction: string; usidebar: boolean }>`
   display: flex;
   flex-direction: ${(props) => props.direction};
   align-items: ${(props) => (props.direction === 'row' ? 'center' : '')};

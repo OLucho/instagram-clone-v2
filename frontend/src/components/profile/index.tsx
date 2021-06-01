@@ -4,7 +4,7 @@ import { Container, Img, Username, Name } from './styles';
 import avatar from '../../assets/defaultAvatar.png';
 
 interface ProfileProps {
-  direction: 'row' | 'column';
+  direction?: 'row' | 'column';
   usidebar?: boolean;
   img: string;
   isOwner?: boolean;
@@ -13,7 +13,7 @@ interface ProfileProps {
 }
 
 export const Profile: React.FC<ProfileProps> = ({
-  direction,
+  direction = '',
   usidebar = false,
   img,
   isOwner = false,
