@@ -9,7 +9,7 @@ import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 import { FaHeart, FaComment } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import ModalMoreOptions from '../modal/modalMoreOptions';
+import { MoreOptionsModal } from '../modal/moreOptions';
 import { Profile } from '../profile';
 import { Card, CardHeader, PhotoCard, CardControls, CardDetails, TimeAgo as StylesTimeAgo, CardFooter } from './styles';
 import api from '../../services/api';
@@ -29,7 +29,7 @@ interface FeedProps {
 const FeedCard: React.FC<FeedProps> = ({ feed }) => {
   const { isAuthor, isLiked, photo } = feed;
 
-  const [commentsPhoto, setCommentsPhoto] = useState(photo.comment);
+  const [commentsPhoto, setCommentsPhoto] = useState<any | null>(photo.comment);
   const [like, setLike] = useState(isLiked);
   const [comment, setComment] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -39,7 +39,7 @@ const FeedCard: React.FC<FeedProps> = ({ feed }) => {
       e.preventDefault();
       const res = await api.post(`/comment/${photo.id}`, { body: comment });
       if (res.status === 201) {
-        setCommentsPhoto((state) => [...state, res.data]);
+        setCommentsPhoto((state: any) => [...state, res.data]);
       }
       setComment('');
       setDisabled(true);
@@ -69,7 +69,7 @@ const FeedCard: React.FC<FeedProps> = ({ feed }) => {
     <Card>
       <CardHeader>
         <Profile direction="row" img={photo.user.avatar} username={photo.user.username} />
-        <ModalMoreOptions isAuthor={isAuthor} photo={photo} />
+        <MoreOptionsModal isAuthor={isAuthor} photo={photo} />
       </CardHeader>
       <PhotoCard src={`data:image/png;base64, ${photo.key}`} />
       <CardControls>

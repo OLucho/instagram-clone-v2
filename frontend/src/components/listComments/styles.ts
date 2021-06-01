@@ -33,4 +33,3 @@ export const StylesTimeAgo = styled.span`
   letter-spacing: 0.2px;
   text-transform: uppercase;
 `;
-Terms;
