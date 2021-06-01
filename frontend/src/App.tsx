@@ -4,7 +4,7 @@ import { BaseModalBackground, ModalProvider } from 'styled-react-modal';
 import { Routes } from './routes';
 
 const fadingBackground = styled(BaseModalBackground)`
-  opacity: ${(props) => props.opacity};
+  opacity: ${(props: { opacity: number }) => props.opacity};
   transition: opacity ease 200ms;
 `;
 

@@ -8,7 +8,7 @@ export const StyledModal = Modal.styled`
     align-items: center;
     justify-content: center;
     background-color: white;
-    opacity: ${({ opacity }) => opacity};
+    opacity: ${({ opacity }: any) => opacity};
     transition: opacity ease 500ms;
     border-radius: .5rem
 `;

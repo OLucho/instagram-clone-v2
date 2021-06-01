@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
-import { useUpload } from '../../hooks/upload';
-import Upload from '../upload';
+import { Upload } from '../upload';
 
 import { StyledModal } from './styles';
 

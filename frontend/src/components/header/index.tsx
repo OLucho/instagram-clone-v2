@@ -5,12 +5,17 @@ import logo from '../../assets/logo.png';
 import { Nav, Container, ContainerSearch, ContainerOptions, Input } from './styles';
 import Logo from '../logo';
 import Search from '../search';
+import { ModalUploadPhoto } from '../modal/uploadPhoto';
 
 export const Header: React.FC = () => {
   const [term, setTerm] = useState('');
 
   const toggleClose = () => {
     setTerm('');
+  };
+
+  const user = {
+    username: 'lu',
   };
 
   return (
@@ -32,7 +37,7 @@ export const Header: React.FC = () => {
               <FaUser color="#222" size={25} />
             </Link>
 
-            <FaSignOutAlt onClick={signOut} size={25} color="#222" />
+            <FaSignOutAlt size={25} color="#222" />
           </ContainerOptions>
         </Container>
       </Nav>
