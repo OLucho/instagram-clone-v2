@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, ContainerResult, ContainerProfile, ContainerEmpty } from './styles';
+import { Profile } from '../profile';
 
 interface SearchProps {
   toggleClose: React.Dispatch<React.SetStateAction<string>>;

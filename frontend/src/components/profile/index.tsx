@@ -5,9 +5,9 @@ import avatar from '../../assets/defaultAvatar.png';
 
 interface ProfileProps {
   direction: 'row' | 'column';
-  usidebar: boolean;
+  usidebar?: boolean;
   img: string;
-  isOwner: boolean;
+  isOwner?: boolean;
   username: string;
   name: string;
 }
