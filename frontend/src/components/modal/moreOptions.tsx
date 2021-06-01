@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { StyledModal, MoreOptions } from './styles';
 import { IPhoto } from '../../redux/upload/uploadTypes';
-
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as FeedActions from '../../redux/feed/feedActions';
 interface MoreOptionsProps {
   isAuthor: boolean;
   photo: IPhoto;
@@ -13,6 +15,8 @@ interface MoreOptionsProps {
 export const MoreOptionsModal: React.FC<MoreOptionsProps> = ({ isAuthor, photo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
+  const dispatch = useDispatch();
+  const { deleteFollow, deletePhoto } = bindActionCreators(FeedActions, dispatch);
 
   const afterOpen = useCallback(() => {
     setTimeout(() => {
@@ -34,7 +38,7 @@ export const MoreOptionsModal: React.FC<MoreOptionsProps> = ({ isAuthor, photo }
 
   const handleDelete = useCallback(
     (_photo) => {
-      deletePhotoAction(_photo);
+      deletePhoto(_photo);
       toggleModal();
     },
     [toggleModal],
@@ -42,11 +46,10 @@ export const MoreOptionsModal: React.FC<MoreOptionsProps> = ({ isAuthor, photo }
 
   const handleFollow = useCallback(
     (idUser) => {
-      deleteFollowAction(idUser);
-      removeFollow(idUser);
+      deleteFollow(idUser);
       toggleModal();
     },
-    [deleteFollowAction, removeFollow, toggleModal],
+    [deleteFollow, toggleModal],
   );
   return (
     <>
@@ -76,7 +79,7 @@ export const MoreOptionsModal: React.FC<MoreOptionsProps> = ({ isAuthor, photo }
             <li>
               <Link to={`/photo/${photo.id}`}>Go to Publication</Link>
             </li>
-            <li className="red" onClick={() => handleFollow(photo.user_id)}>
+            <li className="red" onClick={() => handleFollow(photo.userId)}>
               Stop Following
             </li>
             <li onClick={toggleModal}>Cancel</li>

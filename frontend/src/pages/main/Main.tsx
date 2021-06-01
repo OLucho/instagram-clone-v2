@@ -1,9 +1,12 @@
+import { bindActionCreators } from 'redux';
 import Layout from '../../components/wrapper';
 import { Aside, ContainerOwner, ContainerFollows, ContainerFeeds, Container } from './styles';
 import { Profile } from '../../components/profile';
 import { State } from '../../redux/reducers';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FeedCard from '../../components/FeedCard';
+import * as feedsActions from '../../redux/feed/feedActions';
+import { useEffect } from 'react';
 
 const Main: React.FC = () => {
   interface IFollow {
@@ -14,10 +17,14 @@ const Main: React.FC = () => {
   }
 
   const follows: IFollow[] = [];
-
-  const loading = false;
+  const dispatch = useDispatch();
+  const { getFeeds } = bindActionCreators(feedsActions, dispatch);
   const { user } = useSelector((state: State) => state.user);
-  console.log(user);
+  const { feed, loading } = useSelector((state: State) => state.feeds);
+
+  useEffect(() => {
+    getFeeds();
+  }, [dispatch]);
 
   return (
     <Layout>
@@ -44,7 +51,7 @@ const Main: React.FC = () => {
         </Aside>
 
         <ContainerFeeds>
-          {feeds.length > 0 && feeds.map((feed) => <FeedCard key={feed.photo.id} feed={feed} />)}
+          {feed.length > 0 && feed.map((feed: any) => <FeedCard key={feed.photo.id} feed={feed} />)}
         </ContainerFeeds>
       </Container>
     </Layout>
